@@ -1,7 +1,6 @@
 ---
-# Configuration for the Jekyll template "Just the Docs"
 parent: Decisions
-nav_order: 100
+nav_order: 0
 title: Data Storage
 
 # These are optional elements. Feel free to remove any of them.
@@ -11,12 +10,12 @@ title: Data Storage
 # consulted: {list everyone whose opinions are sought (typically subject-matter experts); and with whom there is a two-way communication}
 # informed: {list everyone who is kept up-to-date on progress; and with whom there is a one-way communication}
 ---
-# Use a relational SQL database to store the data for the Attendance Register System
+# Use a Relational SQL database to store the data for the Advanced Foreign Services (AFS) Visa Processing System
 
 ## Context and Problem Statement
 
-It is necessary to decide how to store data that will be used by the Register Attendance System. For example, local vs cloud storage,
-relational vs non-relational etc. This decision document will list the decisions made with regard to data storage and processing.
+It is necessary to decide how to store data that will be used by the Visa Processing System. For example, local vs cloud storage,
+Relational vs Non-Relational etc. This decision document will list the decisions made with regard to data storage and processing.
 
 ## Decision Drivers
 
@@ -26,37 +25,26 @@ relational vs non-relational etc. This decision document will list the decisions
 
 ## Considered Options
 
-* Relational Database - SQL
-* Non-relational database - NoSQL
+* Relational Database - SQL - PostgreSQL, Microsoft SQL Server, etc.
+* Non-relational database - NoSQL - MongoDB etc.
 
 ## Decision Outcome
 
-Relational SQL Database, because it is more effective when dealing with several distinct entities that have tangential relations to each other.
-For example, rooms are not directly connected to a course, but a course has modules which then have a room assigned to them.
-A relational database will provide the accuracy and ease of use when requesting complex data
-A non-relational database may also work, however would have some limitations with regard to speed and ease of access of data
+The system will use a relational SQL Database, as it is more effective when dealing with several distinct entities that have related data.
+For example, all applications are directly connected to a user, and these can then have support tickets assigned to them, creating another link.
+A relational database will provide the accuracy and ease of use when requesting complex data.
+A non-relational database may also work, however would have some limitations with regard to speed and ease of access of data.
 
 ### Consequences
 
 * Good, because a relational database can be created with specific identified entities, such as:
-  - Students
-  - Staff
-  - Courses
-  - Modules
-  - Units
-  - Rooms
-  - Attendance
-  - Grades
-  - Classes
+	- Users
+	- Applications
+	- Documents
+	- Staff
 * Good, because data relation itegrity is enforced, so data cannot become as easily obsolete and therefore is more accurate and fit for
 purpose
-* Bad, as this can be more expensive than the alternative option
-
-<!-- This is an optional element. Feel free to remove. -->
-### Confirmation
-
-{Describe how the implementation of/compliance with the ADR is confirmed. E.g., by a review or an ArchUnit test.
- Although we classify this element as optional, it is included in most ADRs.}
+* Bad, as this can be more expensive and restrictive than the alternative option if expanding the scope and structure of the database.
 
 ## Pros and Cons of the Options
 
@@ -75,4 +63,4 @@ purpose
 
 ## More Information
 
-Entity Relation Database can be found here: {insert link to ERD here}
+Entity Relation Database can be found included in the Task 1 Submission to show how the database may be structured
